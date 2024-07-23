@@ -12,8 +12,8 @@ let decimalAdded = false
 const operators = ['+','-','x','/']
 
 function handleKeyPress(e){
-    const key = e.target.dadtaset.key
-    const lastchar = operation[opersation.length -1]
+    const key = e.target.dataset.key
+    const lastchar = operation[operation.length -1]
 
     if(key ===  '='){
         return 
@@ -23,7 +23,7 @@ function handleKeyPress(e){
         return
     }
     
-    if(operators.indexof(key) !== -1){
+    if(operators.indexOf(key) !== -1){
         decimalAdded = false
     }
 
@@ -42,4 +42,15 @@ function handleKeyPress(e){
         input.innerHTML = operation
         return
     }
+
+    if (key) {
+        if (key === '.') decimalAdded = true
+        operation += key
+        input.innerHTML = operation
+        return
+     }
 }
+
+keys.forEach(key => {
+    key.addEventListener('click', handleKeyPress)
+})
